@@ -105,5 +105,24 @@ def update()
     db.close()
   end
 
+  def Bounty.find_by_name(name)
+    #creating a find method
+    db = PG.connect({dbname: 'bounties', host: 'localhost'})
+
+    #creating the sql statement
+    sql = 'SELECT * FROM bounties WHERE name = $1'
+    values =[name]
+    #run the prepared statement
+    db.prepare('find_by_name', sql)
+    #run the prepared statement and return the found bounty
+    result = db.exec_prepared('find_by_name', values)
+    if (result.count() == 0)
+      return nil
+    else
+      return Bounty.new(result[0])
+    end
+    #close the connection to the db
+    db.close()
+  end
 
 end

@@ -27,9 +27,11 @@ bounty3 = Bounty.new({
 })
 
 bounty3.save()
-#Updating bounty 3 homeworld form earth to Titan
-bounty3.homeworld = "Titan"
-bounty3.update()
-
+binding.pry
+#Updating bounty3 homeworld from earth to Titan
+# bounty3.homeworld = "Titan"
+# bounty3.update()
+#
 bounties = Bounty.all()
-Bounty.delete_all()
+# # Bounty.delete_all()
+# Bounty.find_by_name('Thanos')
